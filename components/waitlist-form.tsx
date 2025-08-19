@@ -4,7 +4,7 @@ import { useActionState } from "react"
 import { useFormStatus } from "react-dom"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Loader2, Mail, User } from "lucide-react"
+import { Loader2, Mail } from "lucide-react"
 import { joinWaitlist } from "@/lib/actions"
 
 function SubmitButton() {
@@ -51,17 +51,6 @@ export default function WaitlistForm() {
 
         <div className="space-y-4">
           <div className="relative">
-            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-            <Input
-              id="name"
-              name="name"
-              type="text"
-              placeholder="Votre nom (optionnel)"
-              className="pl-10 bg-white/5 border-white/20 text-white placeholder:text-gray-400 rounded-xl py-4 text-lg focus:border-red-500/50 focus:ring-red-500/25"
-            />
-          </div>
-
-          <div className="relative">
             <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
             <Input
               id="email"
@@ -75,10 +64,6 @@ export default function WaitlistForm() {
         </div>
 
         <SubmitButton />
-
-        <p className="text-sm text-gray-400 text-center">
-          En vous inscrivant, vous acceptez de recevoir des mises à jour sur Mordu Sport. Pas de spam, promis !
-        </p>
       </form>
     </div>
   )

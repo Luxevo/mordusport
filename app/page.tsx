@@ -1,8 +1,8 @@
 import Image from "next/image"
-import { MessageCircle, Trophy, BarChart3, Star, Tv, Gift } from "lucide-react"
 import WaitlistForm from "@/components/waitlist-form"
 import NewsletterPopup from "@/components/newsletter-popup"
 import AnimatedElement from "@/components/animated-element"
+import Carousel from "@/components/carousel"
 
 export default function HomePage() {
   return (
@@ -82,89 +82,10 @@ export default function HomePage() {
               </AnimatedElement>
             </div>
 
-           {/* First Row - 3 Squares */}
-           <div className="grid md:grid-cols-3 gap-8 mb-16">
-             {/* Square 1 */}
-             <div className="bg-black rounded-2xl p-8 border border-gray-700 transition-all duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/40 hover:border-blue-500/50 cursor-pointer">
-               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6">
-                 <MessageCircle className="w-6 h-6 text-blue-500" />
-               </div>
-               <h3 className="text-xl font-semibold text-white mb-4">On rassemble les fans</h3>
-               <p className="text-gray-400 leading-relaxed">
-                 Discute avant, pendant et après les matchs avec des milliers de fans comme toi.
-               </p>
-             </div>
-
-             {/* Square 2 */}
-             <div className="bg-black rounded-2xl p-8 border border-gray-700 transition-all duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-500/40 hover:border-yellow-500/50 cursor-pointer">
-               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6">
-                 <Trophy className="w-6 h-6 text-yellow-500" />
-               </div>
-               <h3 className="text-xl font-semibold text-white mb-4">Toutes tes ligues préférées au même endroit</h3>
-               <p className="text-gray-400 leading-relaxed">NHL 🏒, NFL 🏈, NBA 🏀 et plus encore.</p>
-             </div>
-
-             {/* Square 3 */}
-             <div className="bg-black rounded-2xl p-8 border border-gray-700 transition-all duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-500/40 hover:border-green-500/50 cursor-pointer">
-               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6">
-                 <BarChart3 className="w-6 h-6 text-green-500" />
-               </div>
-               <h3 className="text-xl font-semibold text-white mb-4">Stats en temps réel</h3>
-               <p className="text-gray-400 leading-relaxed">Vis les matchs en direct et ne manque aucun moment chaud.</p>
-             </div>
-           </div>
-
-           {/* Second Row - 4 Squares (À venir) */}
-           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-             {/* PrédictionXpert */}
-             <div className="bg-black rounded-2xl p-6 border border-gray-700 transition-all duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/40 hover:border-purple-500/50 cursor-pointer">
-               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-4">
-                 <BarChart3 className="w-6 h-6 text-purple-500" />
-               </div>
-               <h3 className="text-lg font-semibold text-white mb-2">PrédictionXpert</h3>
-               <p className="text-sm text-gray-400 mb-3">📊 L'outil ultime pour t'aider dans tes paris sportifs.</p>
-               <p className="text-sm text-gray-400">
-                 Analyse et suivi IA ultra avancé pour prendre les meilleures décisions.
-               </p>
-             </div>
-
-             {/* Avantages Live Chat */}
-             <div className="bg-black rounded-2xl p-6 border border-gray-700 transition-all duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/40 hover:border-orange-500/50 cursor-pointer">
-               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-4">
-                 <Star className="w-6 h-6 text-orange-500" />
-               </div>
-               <h3 className="text-lg font-semibold text-white mb-2">Avantages Live Chat</h3>
-               <p className="text-sm text-gray-400 mb-3">Personnalise ton expérience.</p>
-               <p className="text-sm text-gray-400">
-                 Réduis la vitesse des messages, débloque des options exclusives et démarque-toi dans le chat.
-               </p>
-             </div>
-
-             {/* PIP Stream */}
-             <div className="bg-black rounded-2xl p-6 border border-gray-700 transition-all duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/40 hover:border-cyan-500/50 cursor-pointer">
-               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-4">
-                 <Tv className="w-6 h-6 text-cyan-500" />
-               </div>
-               <h3 className="text-lg font-semibold text-white mb-2">PIP Stream</h3>
-               <p className="text-sm text-gray-400 mb-3">📺 Regarde et discute en même temps.</p>
-               <p className="text-sm text-gray-400">
-                 Place ton stream en mode Picture-in-Picture et garde le chat actif pendant ton match.
-               </p>
-             </div>
-
-             {/* Tirages et communauté */}
-             <div className="bg-black rounded-2xl p-6 border border-gray-700 transition-all duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-red-500/40 hover:border-red-500/50 cursor-pointer">
-               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-4">
-                 <Gift className="w-6 h-6 text-red-500" />
-               </div>
-               <h3 className="text-lg font-semibold text-white mb-2">Tirages et communauté</h3>
-               <p className="text-sm text-gray-400 mb-3">🎁 Des prix à gagner, ensemble.</p>
-               <p className="text-sm text-gray-400">
-                 Participe à nos tirages réguliers et profite d'une communauté active qui partage la même passion du
-                 sport.
-               </p>
-             </div>
-           </div>
+                       {/* Carousel - Tous les 7 carrés */}
+            <div className="mb-16">
+              <Carousel autoPlay={true} interval={5000} />
+            </div>
          </div>
        </section>
 
@@ -237,7 +158,7 @@ export default function HomePage() {
               className="w-18 h-18 opacity-60"
             />
           </div>
-          <p className="text-gray-400 mb-4">© 2024 Mordu Sport. Tous droits réservés.</p>
+          <p className="text-gray-400 mb-4">© 2025 Mordu Sport. Tous droits réservés.</p>
           <p className="text-sm text-gray-500">L'expérience ultime pour les fans de sport arrive bientôt.</p>
         </div>
       </footer>

@@ -14,7 +14,7 @@ function SubmitButton() {
     <Button
       type="submit"
       disabled={pending}
-      className="w-full bg-red-600 hover:bg-red-700 text-white py-4 text-lg font-semibold rounded-xl shadow-lg transition-all duration-300 hover:scale-105"
+      className="w-full bg-red-600 hover:bg-red-700 text-white py-4 text-lg font-semibold rounded-xl shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer"
     >
       {pending ? (
         <>
@@ -23,8 +23,8 @@ function SubmitButton() {
         </>
       ) : (
         <>
-          <Mail className="mr-2 h-5 w-5" />
-          Rejoindre la Liste d'Attente
+          
+          JE SUIS MORDU
         </>
       )}
     </Button>

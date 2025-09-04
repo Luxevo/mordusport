@@ -94,6 +94,25 @@ export default function Carousel({ autoPlay = true, interval = 5000 }: CarouselP
     })
   }
 
+  // Fonctions pour mobile (1 slide à la fois)
+  const nextSlideMobile = () => {
+    setCurrentSlide((prev) => {
+      if (prev >= clonedSlides.length - 1) {
+        return 0
+      }
+      return prev + 1
+    })
+  }
+
+  const prevSlideMobile = () => {
+    setCurrentSlide((prev) => {
+      if (prev <= 0) {
+        return clonedSlides.length - 1
+      }
+      return prev - 1
+    })
+  }
+
   // Fonction pour aller à un slide spécifique
   const goToSlide = (index: number) => {
     setCurrentSlide(index)
@@ -116,8 +135,19 @@ export default function Carousel({ autoPlay = true, interval = 5000 }: CarouselP
 
   // Gérer la transition infinie avec reset invisible
   useEffect(() => {
-    // Reset invisible quand on arrive aux limites
+    // Reset invisible quand on arrive aux limites (desktop)
     if (currentSlide >= clonedSlides.length - 3) {
+      const timer = setTimeout(() => {
+        setCurrentSlide(0)
+      }, 500)
+      return () => clearTimeout(timer)
+    }
+  }, [currentSlide, clonedSlides.length])
+
+  // Gérer la transition infinie pour mobile
+  useEffect(() => {
+    // Reset invisible quand on arrive aux limites (mobile)
+    if (currentSlide >= clonedSlides.length - 1) {
       const timer = setTimeout(() => {
         setCurrentSlide(0)
       }, 500)
@@ -127,18 +157,61 @@ export default function Carousel({ autoPlay = true, interval = 5000 }: CarouselP
 
   return (
     <>
-      {/* Version Mobile - Grille simple */}
+      {/* Version Mobile - Carrousel 1 slide */}
       <div className="sm:hidden w-full max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 gap-4 py-8">
-          {slides.map((slide, index) => (
-            <div key={index} className={`bg-black rounded-2xl p-6 border border-gray-700 transition-all duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:shadow-2xl ${slide.shadowColor} ${slide.borderColor} cursor-pointer`}>
-              <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center mb-4">
-                <slide.icon className={`w-5 h-5 ${slide.iconColor}`} />
-              </div>
-              <h3 className="text-lg font-semibold text-white mb-3">{slide.title}</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">{slide.description}</p>
+        {/* Navigation Arrows Mobile */}
+        <div className="relative">
+          <button
+            onClick={prevSlideMobile}
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white p-2 rounded-full transition-all duration-200 hover:scale-110 z-10"
+            aria-label="Slide précédent"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          <button
+            onClick={nextSlideMobile}
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white p-2 rounded-full transition-all duration-200 hover:scale-110 z-10"
+            aria-label="Slide suivant"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Carousel Container Mobile */}
+          <div className="relative overflow-hidden rounded-2xl py-8 px-12">
+            <div 
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {clonedSlides.map((slide, index) => (
+                <div key={index} className="w-full flex-shrink-0 px-2">
+                  <div className={`bg-black rounded-2xl p-6 border border-gray-700 transition-all duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:shadow-2xl ${slide.shadowColor} ${slide.borderColor} cursor-pointer h-[280px] flex flex-col`}>
+                    <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center mb-4">
+                      <slide.icon className={`w-5 h-5 ${slide.iconColor}`} />
+                    </div>
+                    <h3 className="text-lg font-semibold text-white mb-3">{slide.title}</h3>
+                    <p className="text-sm text-gray-400 leading-relaxed flex-grow">{slide.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Indicators Mobile */}
+          <div className="flex justify-center mt-4 space-x-2">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                  index === getRealIndex(currentSlide)
+                    ? "bg-white scale-125" 
+                    : "bg-gray-600 hover:bg-gray-400"
+                }`}
+                aria-label={`Aller au slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -169,7 +242,7 @@ export default function Carousel({ autoPlay = true, interval = 5000 }: CarouselP
           >
             {clonedSlides.map((slide, index) => (
               <div key={index} className="w-1/3 flex-shrink-0 px-4">
-                <div className={`bg-black rounded-2xl p-8 border border-gray-700 transition-all duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:shadow-2xl ${slide.shadowColor} ${slide.borderColor} cursor-pointer min-h-[280px] flex flex-col`}>
+                <div className={`bg-black rounded-2xl p-8 border border-gray-700 transition-all duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:shadow-2xl ${slide.shadowColor} ${slide.borderColor} cursor-pointer h-[320px] flex flex-col`}>
                   <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6">
                     <slide.icon className={`w-6 h-6 ${slide.iconColor}`} />
                   </div>

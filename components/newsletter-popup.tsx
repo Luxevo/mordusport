@@ -32,50 +32,50 @@ export default function NewsletterPopup() {
       />
       
       {/* Popup */}
-      <div className="relative bg-black rounded-2xl p-8 max-w-md mx-4 border border-gray-800 shadow-2xl">
+      <div className="relative bg-black rounded-2xl p-4 sm:p-8 max-w-sm sm:max-w-md mx-2 sm:mx-4 border border-gray-800 shadow-2xl max-h-[90vh] overflow-y-auto">
         {/* Bouton fermer X en blanc */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer"
+          className="absolute top-2 sm:top-4 right-2 sm:right-4 text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer z-10"
         >
-          <X className="w-6 h-6" />
+          <X className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
         {/* Logo de la bouche en haut */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-4 sm:mb-6">
           <Image 
             src="/logo-mordu-bouche.png" 
             alt="Mordu Sport Logo" 
             width={80} 
             height={80} 
-            className="h-20 w-auto"
+            className="h-16 sm:h-20 w-auto"
           />
         </div>
 
         {/* Titre principal */}
-        <div className="text-center mb-6">
-          <h2 className="text-3xl font-bold text-white font-league-spartan tracking-wide">
+        <div className="text-center mb-4 sm:mb-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white font-league-spartan tracking-wide">
             MORDS DANS LA GAME
           </h2>
         </div>
 
         {/* Contenu */}
         <div className="text-center">
-          <h3 className="text-2xl font-bold text-white mb-4 font-league-spartan">
+          <h3 className="text-lg sm:text-2xl font-bold text-white mb-3 sm:mb-4 font-league-spartan">
           T'es un vrai mordu de sport ? Prouve-le !
           </h3>
-          <p className="text-gray-300 mb-6 font-league-spartan">
+          <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 font-league-spartan">
           Inscris-toi à notre infolettre pour recevoir ton code promo et tester Mordu Sport en avant-première. Tu ne veux pas manquer ça !
           </p>
           
           <WaitlistForm />
           
-          <p className="text-sm text-gray-400 mt-4 font-league-spartan">
+          <p className="text-xs sm:text-sm text-gray-400 mt-3 sm:mt-4 font-league-spartan">
           Places limitées, et un cadeau exclusif t'attend au lancement officiel.
           </p>
           
           {/* Texte de désabonnement */}
-          <p className="text-xs text-gray-500 mt-6 font-league-spartan leading-relaxed max-w-sm mx-auto">
+          <p className="text-xs text-gray-500 mt-4 sm:mt-6 font-league-spartan leading-relaxed max-w-sm mx-auto">
             En t'inscrivant, tu acceptes de recevoir des courriels promotionnels avec du mordant pouvant causer la rage de sport. Tu peux te désabonner à tout moment avec le lien prévu à cet effet.
           </p>
         </div>

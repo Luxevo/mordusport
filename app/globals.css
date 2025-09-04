@@ -10,6 +10,15 @@
   font-display: swap;
 }
 
+/* Font Street Brush */
+@font-face {
+  font-family: 'Street Brush';
+  src: url('/fonts/static/streetbrushw01_regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Smooth scrolling pour la navigation */
 html {
   scroll-behavior: smooth;
@@ -146,6 +155,11 @@ html {
 /* Classe utilitaire pour League Spartan */
 .font-league-spartan {
   font-family: 'League Spartan', sans-serif;
+}
+
+/* Classe utilitaire pour Street Brush */
+.font-street-brush {
+  font-family: 'Street Brush', cursive;
 }
 
 /* Animations de scroll */

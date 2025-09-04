@@ -14,13 +14,15 @@ export default function HomePage() {
            <div className="flex items-center justify-between h-20">
                          {/* Logo */}
              <div className="flex items-center space-x-4">
-               <Image 
-                 src="/logo-mordu-bouche.png" 
-                 alt="Mordu Sport Logo" 
-                 width={120} 
-                 height={48} 
-                 className="h-16 w-auto"
-               />
+               <a href="#" className="cursor-pointer">
+                 <Image 
+                   src="/logo-mordu-bouche.png" 
+                   alt="Mordu Sport Logo" 
+                   width={120} 
+                   height={48} 
+                   className="h-16 w-auto hover:opacity-80 transition-opacity duration-200"
+                 />
+               </a>
                
              </div>
 
@@ -60,7 +62,7 @@ export default function HomePage() {
                      {/* Slogan */}
            <AnimatedElement>
              <p className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-gray-300 mb-16 font-league-spartan font-bold">
-             L'EXPÉRIENCE ULTIME DES FANS DE SPORT 
+             L'EXPÉRIENCE <span className="text-blue-500 font-street-brush">ULTIME</span> DES <span className="text-blue-500 font-street-brush">VRAIS FANS</span> DE SPORT 
              </p>
            </AnimatedElement>
         </div>

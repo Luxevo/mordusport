@@ -19,6 +19,26 @@
   font-display: swap;
 }
 
+/* Font Webrush */
+@font-face {
+  font-family: 'Webrush';
+  src: url('/fonts/static/Webrush Demo.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Font Good Brush */
+@font-face {
+  font-family: 'Good Brush';
+  src: url('/fonts/static/Good Brush.woff') format('woff'),
+       url('/fonts/static/Good Brush.ttf') format('truetype'),
+       url('/fonts/static/Good Brush.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Smooth scrolling pour la navigation */
 html {
   scroll-behavior: smooth;
@@ -160,6 +180,16 @@ html {
 /* Classe utilitaire pour Street Brush */
 .font-street-brush {
   font-family: 'Street Brush', cursive;
+}
+
+/* Classe utilitaire pour Webrush */
+.font-webrush {
+  font-family: 'Webrush', cursive;
+}
+
+/* Classe utilitaire pour Good Brush */
+.font-good-brush {
+  font-family: 'Good Brush', cursive;
 }
 
 /* Animations de scroll */

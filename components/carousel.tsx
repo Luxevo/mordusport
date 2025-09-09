@@ -77,7 +77,7 @@ export default function Carousel({ autoPlay = true, interval = 5000 }: CarouselP
   const nextSlide = () => {
     setCurrentSlide((prev) => {
       // Si on arrive à la fin des clones, on recommence au début des clones
-      if (prev >= clonedSlides.length - 3) {
+      if (prev >= clonedSlides.length - 2) {
         return 0
       }
       return prev + 1
@@ -88,7 +88,7 @@ export default function Carousel({ autoPlay = true, interval = 5000 }: CarouselP
     setCurrentSlide((prev) => {
       // Si on arrive au début, on va à la fin des clones
       if (prev <= 0) {
-        return clonedSlides.length - 3
+        return clonedSlides.length - 2
       }
       return prev - 1
     })
@@ -136,7 +136,7 @@ export default function Carousel({ autoPlay = true, interval = 5000 }: CarouselP
   // Gérer la transition infinie avec reset invisible
   useEffect(() => {
     // Reset invisible quand on arrive aux limites (desktop)
-    if (currentSlide >= clonedSlides.length - 3) {
+    if (currentSlide >= clonedSlides.length - 2) {
       const timer = setTimeout(() => {
         setCurrentSlide(0)
       }, 500)
@@ -216,11 +216,11 @@ export default function Carousel({ autoPlay = true, interval = 5000 }: CarouselP
       </div>
 
       {/* Version Desktop - Carrousel */}
-      <div className="hidden sm:block relative w-full max-w-6xl mx-auto px-8">
+      <div className="hidden sm:block relative w-full max-w-4xl mx-auto px-8">
         {/* Navigation Arrows - Positionnées en dehors du carousel */}
         <button
           onClick={prevSlide}
-          className="absolute -left-16 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white p-3 rounded-full transition-all duration-200 hover:scale-110 z-10"
+          className="absolute -left-12 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white p-3 rounded-full transition-all duration-200 hover:scale-110 z-10"
           aria-label="Slide précédent"
         >
           <ChevronLeft className="w-6 h-6" />
@@ -228,7 +228,7 @@ export default function Carousel({ autoPlay = true, interval = 5000 }: CarouselP
 
         <button
           onClick={nextSlide}
-          className="absolute -right-16 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white p-3 rounded-full transition-all duration-200 hover:scale-110 z-10"
+          className="absolute -right-12 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white p-3 rounded-full transition-all duration-200 hover:scale-110 z-10"
           aria-label="Slide suivant"
         >
           <ChevronRight className="w-6 h-6" />
@@ -238,10 +238,10 @@ export default function Carousel({ autoPlay = true, interval = 5000 }: CarouselP
         <div className="relative overflow-hidden rounded-2xl py-12 px-4">
           <div 
             className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentSlide * (100/3)}%)` }}
+            style={{ transform: `translateX(-${currentSlide * (100/2)}%)` }}
           >
             {clonedSlides.map((slide, index) => (
-              <div key={index} className="w-1/3 flex-shrink-0 px-4">
+              <div key={index} className="w-1/2 flex-shrink-0 px-4">
                 <div className={`bg-black rounded-2xl p-8 border border-gray-700 transition-all duration-300 ease-in-out hover:transform hover:-translate-y-2 hover:shadow-2xl ${slide.shadowColor} ${slide.borderColor} cursor-pointer h-[320px] flex flex-col`}>
                   <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6">
                     <slide.icon className={`w-6 h-6 ${slide.iconColor}`} />

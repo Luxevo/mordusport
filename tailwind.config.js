@@ -11,6 +11,9 @@ module.exports = {
     extend: {
       fontFamily: {
         'league-spartan': ['League Spartan', 'sans-serif'],
+        'street-brush': ['Street Brush', 'cursive'],
+        'webrush': ['Webrush', 'cursive'],
+        'good-brush': ['Good Brush', 'cursive'],
         'sans': ['League Spartan', 'sans-serif'],
       },
       colors: {

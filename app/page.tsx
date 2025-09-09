@@ -3,11 +3,16 @@ import WaitlistForm from "@/components/waitlist-form"
 import NewsletterPopup from "@/components/newsletter-popup"
 import AnimatedElement from "@/components/animated-element"
 import Carousel from "@/components/carousel"
+import Bet99Ad from "@/components/bet99-ad"
+import Bet99AdMobile from "@/components/bet99-ad-mobile"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-black">
       <NewsletterPopup />
+      
+
+      {/* Main Content */}
       {/* Navigation Bar */}
              <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,7 +67,7 @@ export default function HomePage() {
                      {/* Slogan */}
            <AnimatedElement>
              <p className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-gray-300 mb-16 font-league-spartan font-bold">
-             L'EXPÉRIENCE <span className="text-blue-500 font-street-brush">ULTIME</span> DES <span className="text-blue-500 font-street-brush">VRAIS FANS</span> DE SPORT 
+             L'EXPÉRIENCE <span className="text-blue-500 font-good-brush">ULTIME</span> DES <span className="text-blue-500 font-good-brush">VRAIS FANS</span> DE SPORT 
              </p>
            </AnimatedElement>
         </div>
@@ -73,7 +78,7 @@ export default function HomePage() {
          <div className="max-w-6xl mx-auto">
                        <div className="text-center mb-16">
               <AnimatedElement>
-                <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 font-league-spartan">
+                <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 font-good-brush">
                   Ton sport avec du mordant
                 </h2>
               </AnimatedElement>
@@ -95,7 +100,7 @@ export default function HomePage() {
        <section id="adn" className="py-16 px-4 bg-black">
          <div className="max-w-4xl mx-auto text-center">
                        <AnimatedElement>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 font-good-brush">
                 Fièrement du Québec, pensée par des passionnés de sport pour les passionnés de sport.
               </h2>
             </AnimatedElement>
@@ -120,7 +125,7 @@ export default function HomePage() {
        <section id="fan" className="py-16 px-4 bg-gray-900">
          <div className="max-w-4xl mx-auto text-center">
                        <AnimatedElement>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">T'es un vrai fan de sport ? Prouve-le :</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 font-good-brush">T'es un vrai fan de sport ? Prouve-le :</h2>
             </AnimatedElement>
            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
              Inscris-toi à notre infolettre pour recevoir ton code promo et tester l'app en avant-première. Tu ne veux
@@ -148,22 +153,37 @@ export default function HomePage() {
 
       
 
-      {/* Footer */}
-      <footer className="py-12 px-4 border-t border-gray-700 bg-black">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="flex justify-center mb-6">
-            <Image
-              src="/logo-mordu-complete.svg"
-              alt="Mordu Sport Logo"
-              width={48}
-              height={48}
-              className="w-18 h-18 opacity-60"
-            />
-          </div>
-          <p className="text-gray-400 mb-4">© 2025 Mordu Sport. Tous droits réservés.</p>
-          <p className="text-sm text-gray-500">L'expérience ultime pour les fans de sport arrive bientôt.</p>
-        </div>
-      </footer>
+          {/* Footer */}
+          <footer className="py-12 px-4 border-t border-gray-700 bg-black">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="flex justify-center mb-6">
+                <Image
+                  src="/logo-mordu-complete.svg"
+                  alt="Mordu Sport Logo"
+                  width={48}
+                  height={48}
+                  className="w-18 h-18 opacity-60"
+                />
+              </div>
+              <p className="text-gray-400 mb-4">© 2025 Mordu Sport. Tous droits réservés.</p>
+              <p className="text-sm text-gray-500">L'expérience ultime pour les fans de sport arrive bientôt.</p>
+            </div>
+          </footer>
+
+      {/* BET99 Ad - Sticky Image Right */}
+      <div className="hidden xl:block fixed right-4 top-24 z-48 w-48">
+        <Bet99Ad />
+      </div>
+
+      {/* BET99 Ad - Sticky Image Left */}
+      <div className="hidden xl:block fixed left-4 top-24 z-48 w-48">
+        <Bet99Ad />
+      </div>
+
+      {/* BET99 Ad - Mobile/Tablet Sticky Bottom */}
+      <div className="xl:hidden fixed bottom-0 left-0 right-0 z-40">
+        <Bet99AdMobile />
+      </div>
     </div>
   )
 }

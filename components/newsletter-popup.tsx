@@ -24,7 +24,7 @@ export default function NewsletterPopup() {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center">
       {/* Overlay */}
       <div 
         className="absolute inset-0 bg-black/80 backdrop-blur-sm"
@@ -32,13 +32,13 @@ export default function NewsletterPopup() {
       />
       
       {/* Popup */}
-      <div className="relative bg-black rounded-2xl p-4 sm:p-8 max-w-sm sm:max-w-md mx-2 sm:mx-4 border border-gray-800 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div className="relative bg-black rounded-2xl p-4 sm:p-8 max-w-sm sm:max-w-md mx-2 sm:mx-4 border border-gray-800 shadow-2xl max-h-[80vh] overflow-y-auto">
         {/* Bouton fermer X en blanc */}
         <button
           onClick={handleClose}
-          className="absolute top-2 sm:top-4 right-2 sm:right-4 text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer z-10"
+          className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white hover:text-gray-300 transition-colors duration-200 cursor-pointer z-10 bg-black/50 rounded-full p-1"
         >
-          <X className="w-5 h-5 sm:w-6 sm:h-6" />
+          <X className="w-6 h-6" />
         </button>
 
         {/* Logo de la bouche en haut */}
@@ -54,7 +54,7 @@ export default function NewsletterPopup() {
 
         {/* Titre principal */}
         <div className="text-center mb-4 sm:mb-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white font-league-spartan tracking-wide">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white font-good-brush tracking-wide">
             MORDS DANS LA GAME
           </h2>
         </div>

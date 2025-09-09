@@ -8,10 +8,11 @@ export default function Bet99Ad() {
         <Image 
           src="/bet99-ad-banner.png" 
           alt="BET99 - Deuxième chance jusqu'à 800$" 
-          width={300}
-          height={570}
-          className="w-full h-auto object-contain max-w-full"
+          width={160}
+          height={600}
+          className="w-[160px] h-[600px] object-contain"
           priority
+          unoptimized
         />
         
        

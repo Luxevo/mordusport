@@ -9,7 +9,7 @@ export default function Bet99AdMobile() {
       <img 
         src="/bet99-ad-mobile.jpg" 
         alt="BET99 - Deuxième chance jusqu'à 800$" 
-        className="w-full h-auto"
+        className="w-[320px] h-[100px] object-contain mx-auto"
       />
     </a>
   )

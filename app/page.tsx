@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import Image from "next/image"
 import WaitlistForm from "@/components/waitlist-form"
 import NewsletterPopup from "@/components/newsletter-popup"
@@ -7,6 +10,12 @@ import Bet99Ad from "@/components/bet99-ad"
 import Bet99AdMobile from "@/components/bet99-ad-mobile"
 
 export default function HomePage() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
   return (
     <div className="min-h-screen bg-black">
       <NewsletterPopup />
@@ -46,7 +55,10 @@ export default function HomePage() {
 
             {/* Mobile menu button */}
             <div className="md:hidden">
-              <button className="text-gray-300 hover:text-white p-2">
+              <button 
+                onClick={toggleMobileMenu}
+                className="text-gray-300 hover:text-white p-2"
+              >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -54,6 +66,35 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-black/95 backdrop-blur-md border-b border-gray-800">
+            <div className="px-4 py-4 space-y-4">
+              <a 
+                href="#ton-sport" 
+                className="block text-gray-300 hover:text-white transition-colors duration-200 font-league-spartan"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Ton sport avec du mordant
+              </a>
+              <a 
+                href="#adn" 
+                className="block text-gray-300 hover:text-white transition-colors duration-200 font-league-spartan"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Notre ADN
+              </a>
+              <a 
+                href="#fan" 
+                className="block text-gray-300 hover:text-white transition-colors duration-200 font-league-spartan"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                T'es un vrai fan ?
+              </a>
+            </div>
+          </div>
+        )}
       </nav>
 
              {/* Logo Section */}
@@ -154,7 +195,7 @@ export default function HomePage() {
       
 
           {/* Footer */}
-          <footer className="py-12 px-4 border-t border-gray-700 bg-black">
+          <footer className="py-12 px-4 pb-20 xl:pb-12 border-t border-gray-700 bg-black">
             <div className="max-w-4xl mx-auto text-center">
               <div className="flex justify-center mb-6">
                 <Image
@@ -165,23 +206,21 @@ export default function HomePage() {
                   className="w-18 h-18 opacity-60"
                 />
               </div>
-              <p className="text-gray-400 mb-4">© 2025 Mordu Sport. Tous droits réservés.</p>
-              <p className="text-sm text-gray-500">L'expérience ultime pour les fans de sport arrive bientôt.</p>
             </div>
           </footer>
 
       {/* BET99 Ad - Sticky Image Right */}
-      <div className="hidden xl:block fixed right-4 top-24 z-48 w-48">
+      <div className="hidden xl:block fixed right-4 top-24 z-48">
         <Bet99Ad />
       </div>
 
       {/* BET99 Ad - Sticky Image Left */}
-      <div className="hidden xl:block fixed left-4 top-24 z-48 w-48">
+      <div className="hidden xl:block fixed left-4 top-24 z-48">
         <Bet99Ad />
       </div>
 
       {/* BET99 Ad - Mobile/Tablet Sticky Bottom */}
-      <div className="xl:hidden fixed bottom-0 left-0 right-0 z-40">
+      <div className="xl:hidden fixed bottom-0 left-0 right-0 z-40 flex justify-center">
         <Bet99AdMobile />
       </div>
     </div>

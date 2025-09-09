@@ -2,7 +2,12 @@ import Image from "next/image"
 
 export default function Bet99Ad() {
   return (
-    <div className="overflow-hidden rounded-lg border border-transparent hover:border-green-500 hover:shadow-green-500/60 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-all duration-300">
+    <a 
+      href="https://record.canadiangamingaffiliates.com/_8eweRFtGXWkdimWE6PdS1WNd7ZgqdRLk/1/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="block overflow-hidden rounded-lg border border-transparent hover:border-green-500 hover:shadow-green-500/60 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-all duration-300"
+    >
       {/* BET99 Ad Banner Image */}
       <div className="relative">
         <Image 
@@ -17,6 +22,6 @@ export default function Bet99Ad() {
         
        
       </div>
-    </div>
+    </a>
   )
 }

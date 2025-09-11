@@ -7,7 +7,7 @@ export default function Bet99Ad() {
   // Use ROC Display ads based on language
   const adImage = language === 'en' ? '/ROC-Display-160x600-EN.jpg' : '/bet99-ad-banner.png'
   const adAlt = language === 'en' ? 'ROC Display - English Ad' : 'BET99 - Deuxième chance jusqu\'à 800$'
-  const adLink = language === 'en' ? '#' : 'https://record.canadiangamingaffiliates.com/_8eweRFtGXWkdimWE6PdS1WNd7ZgqdRLk/1/'
+  const adLink = 'https://record.canadiangamingaffiliates.com/_8eweRFtGXWkdimWE6PdS1WNd7ZgqdRLk/1/'
 
   return (
     <a 

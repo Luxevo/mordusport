@@ -11,6 +11,7 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
 
   const email = formData.get("email")
   const name = formData.get("name")
+  const age18 = formData.get("age18") === "on" // Checkbox returns "on" when checked
 
   // Validate required fields
   if (!email) {
@@ -30,6 +31,7 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
       {
         email: email.toString(),
         name: name?.toString() || null,
+        age18: age18,
       },
     ])
 

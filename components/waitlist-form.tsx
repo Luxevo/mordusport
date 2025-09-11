@@ -61,6 +61,19 @@ export default function WaitlistForm() {
               className="pl-10 bg-white/5 border-white/20 text-white placeholder:text-gray-400 rounded-xl py-4 text-lg focus:border-red-500/50 focus:ring-red-500/25"
             />
           </div>
+          
+          {/* Case à cocher 18 ans et plus */}
+          <div className="flex items-center space-x-3">
+            <input
+              type="checkbox"
+              id="age18"
+              name="age18"
+              className="w-4 h-4 text-red-600 bg-gray-800 border-gray-600 rounded-lg focus:ring-red-500 focus:ring-2"
+            />
+            <label htmlFor="age18" className="text-sm text-gray-300 font-league-spartan">
+              J'ai 18 ans et plus
+            </label>
+          </div>
         </div>
 
         <SubmitButton />

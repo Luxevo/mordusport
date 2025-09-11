@@ -6,9 +6,11 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Loader2, Mail } from "lucide-react"
 import { joinWaitlist } from "@/lib/actions"
+import { useLanguage } from "@/lib/language-context"
 
 function SubmitButton() {
   const { pending } = useFormStatus()
+  const { t } = useLanguage()
 
   return (
     <Button
@@ -19,12 +21,11 @@ function SubmitButton() {
       {pending ? (
         <>
           <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-          Inscription en cours...
+          {t('form.submitting')}
         </>
       ) : (
         <>
-          
-          JE SUIS MORDU
+          {t('form.submit')}
         </>
       )}
     </Button>
@@ -33,6 +34,7 @@ function SubmitButton() {
 
 export default function WaitlistForm() {
   const [state, formAction] = useActionState(joinWaitlist, null)
+  const { t } = useLanguage()
 
   return (
     <div className="max-w-md mx-auto">
@@ -56,23 +58,41 @@ export default function WaitlistForm() {
               id="email"
               name="email"
               type="email"
-              placeholder="votre@email.com"
+              placeholder={t('form.email')}
               required
               className="pl-10 bg-white/5 border-white/20 text-white placeholder:text-gray-400 rounded-xl py-4 text-lg focus:border-red-500/50 focus:ring-red-500/25"
             />
           </div>
           
-          {/* Case à cocher 18 ans et plus */}
-          <div className="flex items-center space-x-3">
-            <input
-              type="checkbox"
-              id="age18"
-              name="age18"
-              className="w-4 h-4 text-red-600 bg-gray-800 border-gray-600 rounded-lg focus:ring-red-500 focus:ring-2"
-            />
-            <label htmlFor="age18" className="text-sm text-gray-300 font-league-spartan">
-              J'ai 18 ans et plus
-            </label>
+          {/* Sélection d'âge */}
+          <div className="space-y-3">
+            <div className="flex items-center space-x-3">
+              <input
+                type="radio"
+                id="age18plus"
+                name="age"
+                value="18plus"
+                className="w-4 h-4 text-red-600 bg-gray-800 border-gray-600 focus:ring-red-500 focus:ring-2"
+              />
+              <label htmlFor="age18plus" className="text-sm text-gray-300 font-league-spartan">
+                {t('form.age.18plus')}
+              </label>
+            </div>
+            <div className="flex items-center space-x-3">
+              <input
+                type="radio"
+                id="age18minus"
+                name="age"
+                value="18minus"
+                className="w-4 h-4 text-red-600 bg-gray-800 border-gray-600 focus:ring-red-500 focus:ring-2"
+              />
+              <label htmlFor="age18minus" className="text-sm text-gray-300 font-league-spartan">
+                {t('form.age.18minus')}
+              </label>
+            </div>
+            <p className="text-xs text-gray-400 font-league-spartan">
+              * {t('form.age.disclaimer')}
+            </p>
           </div>
         </div>
 

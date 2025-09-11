@@ -1,12 +1,13 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
+import { LanguageProvider } from "@/lib/language-context"
 
 export const metadata: Metadata = {
-  title: "Mordu Sport - L'expérience ultime pour les fans de sport",
+  title: "Mordu Sport - L'expérience ultime pour les fans de sport | The Ultimate Experience for Real Sports Fans",
   description:
-    "Regardez vos matchs préférés et chattez en temps réel avec d'autres passionnés. Comme Twitch, mais pour le sport. NHL, NBA, NFL et plus encore.",
-  keywords: "sport, streaming, chat, NHL, NBA, NFL, fans, communauté, live",
+    "Regardez vos matchs préférés et chattez en temps réel avec d'autres passionnés. Comme Twitch, mais pour le sport. NHL, NBA, NFL et plus encore. | Watch your favorite games and chat in real-time with other enthusiasts. Like Twitch, but for sports. NHL, NBA, NFL and more.",
+  keywords: "sport, streaming, chat, NHL, NBA, NFL, fans, communauté, live, sports, community, Quebec, Canada",
   authors: [{ name: "Mordu Sport" }],
   creator: "Mordu Sport",
   publisher: "Mordu Sport",
@@ -42,7 +43,11 @@ html {
 }
         `}</style>
       </head>
-      <body className="font-league-spartan">{children}</body>
+      <body className="font-league-spartan">
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   )
 }

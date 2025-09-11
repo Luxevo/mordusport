@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react'
 import { X } from 'lucide-react'
 import Image from 'next/image'
 import WaitlistForm from './waitlist-form'
+import { useLanguage } from '@/lib/language-context'
 
 export default function NewsletterPopup() {
   const [isOpen, setIsOpen] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     // Afficher le popup après 3 secondes
@@ -55,28 +57,28 @@ export default function NewsletterPopup() {
         {/* Titre principal */}
         <div className="text-center mb-4 sm:mb-6">
           <h2 className="text-2xl sm:text-3xl font-bold text-white font-good-brush tracking-wide">
-            MORDS DANS LA GAME
+            {t('popup.title')}
           </h2>
         </div>
 
         {/* Contenu */}
         <div className="text-center">
           <h3 className="text-lg sm:text-2xl font-bold text-white mb-3 sm:mb-4 font-league-spartan">
-          T'es un vrai mordu de sport ? Prouve-le !
+          {t('popup.subtitle')}
           </h3>
           <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 font-league-spartan">
-          Inscris-toi à notre infolettre pour recevoir ton code promo et tester Mordu Sport en avant-première. Tu ne veux pas manquer ça !
+          {t('popup.desc')}
           </p>
           
           <WaitlistForm />
           
           <p className="text-xs sm:text-sm text-gray-400 mt-3 sm:mt-4 font-league-spartan">
-          Places limitées, et un cadeau exclusif t'attend au lancement officiel.
+          {t('popup.limited')}
           </p>
           
           {/* Texte de désabonnement */}
           <p className="text-xs text-gray-500 mt-4 sm:mt-6 font-league-spartan leading-relaxed max-w-sm mx-auto">
-            En t'inscrivant, tu acceptes de recevoir des courriels promotionnels avec du mordant pouvant causer la rage de sport. Tu peux te désabonner à tout moment avec le lien prévu à cet effet.
+            {t('popup.disclaimer')}
           </p>
         </div>
       </div>

@@ -11,7 +11,7 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
 
   const email = formData.get("email")
   const name = formData.get("name")
-  const age18 = formData.get("age18") === "on" // Checkbox returns "on" when checked
+  const age = formData.get("age") // Radio button returns the selected value
 
   // Validate required fields
   if (!email) {
@@ -24,6 +24,11 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
     return { error: "Please enter a valid email address" }
   }
 
+  // Validate age selection
+  if (!age) {
+    return { error: "Please select your age group" }
+  }
+
   const supabase = createServerClient()
 
   try {
@@ -31,7 +36,7 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
       {
         email: email.toString(),
         name: name?.toString() || null,
-        age18: age18,
+        age: age.toString(),
       },
     ])
 

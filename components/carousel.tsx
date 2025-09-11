@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, MessageCircle, Trophy, BarChart3, Star, Tv, Gift } from "lucide-react"
+import { useLanguage } from "@/lib/language-context"
 
 interface CarouselProps {
   autoPlay?: boolean
@@ -10,61 +11,62 @@ interface CarouselProps {
 
 export default function Carousel({ autoPlay = true, interval = 5000 }: CarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const { t } = useLanguage()
 
   const slides = [
     {
       icon: MessageCircle,
       iconColor: "text-blue-500",
-      title: "On rassemble les fans",
-      description: "Discute avant, pendant et après les matchs avec des milliers de fans comme toi.",
+      title: t('carousel.fans.title'),
+      description: t('carousel.fans.desc'),
       borderColor: "hover:border-blue-500/50",
       shadowColor: "hover:shadow-blue-500/40"
     },
     {
       icon: Trophy,
       iconColor: "text-yellow-500",
-      title: "Toutes tes ligues préférées au même endroit",
-      description: "NHL 🏒, NFL 🏈, NBA 🏀 et plus encore.",
+      title: t('carousel.leagues.title'),
+      description: t('carousel.leagues.desc'),
       borderColor: "hover:border-yellow-500/50",
       shadowColor: "hover:shadow-yellow-500/40"
     },
     {
       icon: BarChart3,
       iconColor: "text-green-500",
-      title: "Stats en temps réel",
-      description: "Vis les matchs en direct et ne manque aucun moment chaud.",
+      title: t('carousel.stats.title'),
+      description: t('carousel.stats.desc'),
       borderColor: "hover:border-green-500/50",
       shadowColor: "hover:shadow-green-500/40"
     },
     {
       icon: BarChart3,
       iconColor: "text-purple-500",
-      title: "PrédictionXpert",
-      description: "📊 L'outil ultime pour t'aider dans tes paris sportifs. Analyse et suivi IA ultra avancé.",
+      title: t('carousel.prediction.title'),
+      description: t('carousel.prediction.desc'),
       borderColor: "hover:border-purple-500/50",
       shadowColor: "hover:shadow-purple-500/40"
     },
     {
       icon: Star,
       iconColor: "text-orange-500",
-      title: "Avantages Live Chat",
-      description: "Personnalise ton expérience. Réduis la vitesse des messages, débloque des options exclusives.",
+      title: t('carousel.chat.title'),
+      description: t('carousel.chat.desc'),
       borderColor: "hover:border-orange-500/50",
       shadowColor: "hover:shadow-orange-500/40"
     },
     {
       icon: Tv,
       iconColor: "text-cyan-500",
-      title: "PIP Stream",
-      description: "📺 Regarde et discute en même temps. Place ton stream en mode Picture-in-Picture.",
+      title: t('carousel.pip.title'),
+      description: t('carousel.pip.desc'),
       borderColor: "hover:border-cyan-500/50",
       shadowColor: "hover:shadow-cyan-500/40"
     },
     {
       icon: Gift,
       iconColor: "text-red-500",
-      title: "Tirages et communauté",
-      description: "🎁 Des prix à gagner, ensemble. Participe à nos tirages réguliers et profite d'une communauté active.",
+      title: t('carousel.community.title'),
+      description: t('carousel.community.desc'),
       borderColor: "hover:border-red-500/50",
       shadowColor: "hover:shadow-red-500/40"
     }

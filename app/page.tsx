@@ -9,9 +9,11 @@ import AnimatedElement from "@/components/animated-element"
 import Carousel from "@/components/carousel"
 import Bet99Ad from "@/components/bet99-ad"
 import Bet99AdMobile from "@/components/bet99-ad-mobile"
+import { useLanguage } from "@/lib/language-context"
 
 export default function HomePage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { language, setLanguage, t } = useLanguage()
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -46,7 +48,7 @@ export default function HomePage() {
                <div >
                  <Image 
                    src="/app-store.png" 
-                   alt="Bientôt sur l'App Store" 
+                   alt={t('appstore.alt')} 
                    width={100} 
                    height={32} 
                    className="h-8 w-auto"
@@ -55,7 +57,7 @@ export default function HomePage() {
                <div>
                  <Image 
                    src="/playstore.png" 
-                   alt="Bientôt sur Google Play" 
+                   alt={t('playstore.alt')} 
                    width={100} 
                    height={32} 
                    className="h-8 w-auto"
@@ -68,7 +70,7 @@ export default function HomePage() {
                <div>
                  <Image 
                    src="/app-store.png" 
-                   alt="Bientôt sur l'App Store" 
+                   alt={t('appstore.alt')} 
                    width={80} 
                    height={26} 
                    className="h-6 w-auto"
@@ -77,7 +79,7 @@ export default function HomePage() {
                <div>
                  <Image 
                    src="/playstore.png" 
-                   alt="Bientôt sur Google Play" 
+                   alt={t('playstore.alt')} 
                    width={80} 
                    height={26} 
                    className="h-6 w-auto"
@@ -89,14 +91,39 @@ export default function HomePage() {
                                        {/* Navigation Links */}
               <div className="hidden md:flex items-center space-x-8">
                 <a href="#ton-sport" className="text-gray-300 hover:text-white transition-colors duration-200 font-league-spartan">
-                  Ton sport avec du mordant
+                  {t('nav.sport')}
                 </a>
                 <a href="#adn" className="text-gray-300 hover:text-white transition-colors duration-200 font-league-spartan">
-                  Notre ADN
+                  {t('nav.adn')}
                 </a>
                 <a href="#fan" className="text-gray-300 hover:text-white transition-colors duration-200 font-league-spartan">
-                  T'es un vrai fan ?
+                  {t('nav.fan')}
                 </a>
+                
+                {/* Language Selector */}
+                <div className="flex items-center space-x-2 ml-4">
+                  <button
+                    onClick={() => setLanguage('fr')}
+                    className={`px-2 py-1 text-sm font-league-spartan transition-colors duration-200 ${
+                      language === 'fr' 
+                        ? 'text-white bg-gray-700 rounded' 
+                        : 'text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    {t('lang.fr')}
+                  </button>
+                  <span className="text-gray-500">|</span>
+                  <button
+                    onClick={() => setLanguage('en')}
+                    className={`px-2 py-1 text-sm font-league-spartan transition-colors duration-200 ${
+                      language === 'en' 
+                        ? 'text-white bg-gray-700 rounded' 
+                        : 'text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    {t('lang.en')}
+                  </button>
+                </div>
               </div>
 
             {/* Mobile menu button */}
@@ -122,22 +149,49 @@ export default function HomePage() {
                 className="block text-gray-300 hover:text-white transition-colors duration-200 font-league-spartan"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Ton sport avec du mordant
+                {t('nav.sport')}
               </a>
               <a 
                 href="#adn" 
                 className="block text-gray-300 hover:text-white transition-colors duration-200 font-league-spartan"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Notre ADN
+                {t('nav.adn')}
               </a>
               <a 
                 href="#fan" 
                 className="block text-gray-300 hover:text-white transition-colors duration-200 font-league-spartan"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                T'es un vrai fan ?
+                {t('nav.fan')}
               </a>
+              
+              {/* Mobile Language Selector */}
+              <div className="flex items-center space-x-4 pt-4 border-t border-gray-700">
+                <span className="text-gray-400 text-sm font-league-spartan">Language:</span>
+                <div className="flex items-center space-x-2">
+                  <button
+                    onClick={() => setLanguage('fr')}
+                    className={`px-3 py-1 text-sm font-league-spartan transition-colors duration-200 ${
+                      language === 'fr' 
+                        ? 'text-white bg-gray-700 rounded' 
+                        : 'text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    {t('lang.fr')}
+                  </button>
+                  <button
+                    onClick={() => setLanguage('en')}
+                    className={`px-3 py-1 text-sm font-league-spartan transition-colors duration-200 ${
+                      language === 'en' 
+                        ? 'text-white bg-gray-700 rounded' 
+                        : 'text-gray-400 hover:text-white'
+                    }`}
+                  >
+                    {t('lang.en')}
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -154,7 +208,11 @@ export default function HomePage() {
                      {/* Slogan */}
            <AnimatedElement>
              <p className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-gray-300 mb-16 font-league-spartan font-bold">
-             L'EXPÉRIENCE <span className="text-blue-500 font-good-brush">ULTIME</span> DES <span className="text-blue-500 font-good-brush">VRAIS FANS</span> DE SPORT 
+             {language === 'fr' ? (
+               <>L'EXPÉRIENCE <span className="text-blue-500 font-good-brush">ULTIME</span> DES <span className="text-blue-500 font-good-brush">VRAIS FANS</span> DE SPORT</>
+             ) : (
+               <>THE <span className="text-blue-500 font-good-brush">ULTIMATE</span> EXPERIENCE FOR <span className="text-blue-500 font-good-brush">REAL FANS</span> OF SPORT</>
+             )}
              </p>
            </AnimatedElement>
         </div>
@@ -166,12 +224,12 @@ export default function HomePage() {
                        <div className="text-center mb-16">
               <AnimatedElement>
                 <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 font-good-brush">
-                  Ton sport avec du mordant
+                  {t('sport.title')}
                 </h2>
               </AnimatedElement>
               <AnimatedElement delay={1}>
                 <p className="text-xl text-gray-300 max-w-3xl mx-auto font-league-spartan">
-                  Une nouvelle façon de vivre tes matchs est arrivée. Voici ce que tu retrouveras dans Mordu Sport.
+                  {t('sport.subtitle')}
                 </p>
               </AnimatedElement>
             </div>
@@ -191,21 +249,18 @@ export default function HomePage() {
          <div className="max-w-4xl mx-auto text-center">
                        <AnimatedElement>
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 font-good-brush">
-                Fièrement du Québec, pensée par des passionnés de sport pour les passionnés de sport.
+                {t('quebec.title')}
               </h2>
             </AnimatedElement>
            <div className="text-lg text-gray-300 leading-tight space-y-2 max-w-3xl mx-auto">
              <p>
-               Trop souvent, les amateurs francophones n'ont pas accès à une vraie app de sport qui leur ressemble. On a
-               voulu changer ça.
+               {t('quebec.p1')}
              </p>
              <p>
-               Notre idée est simple : rassembler les fans, créer un endroit où tu peux suivre tes matchs en direct,
-               discuter avant, pendant et après la partie, et découvrir d'autres passionnés comme toi.
+               {t('quebec.p2')}
              </p>
              <p>
-               Une plateforme pensée de A à Z pour vivre le sport ensemble, partager l'émotion du moment et se rapprocher
-               encore plus de l'action.
+               {t('quebec.p3')}
              </p>
            </div>
          </div>
@@ -218,14 +273,13 @@ export default function HomePage() {
        <section id="fan" className="py-16 px-4 bg-black">
          <div className="max-w-4xl mx-auto text-center">
                        <AnimatedElement>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 font-good-brush">T'es un vrai fan de sport ? Prouve-le :</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6 font-good-brush">{t('fan.title')}</h2>
             </AnimatedElement>
            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-             Inscris-toi à notre infolettre pour recevoir ton code promo et tester l'app en avant-première. Tu ne veux
-             pas manquer ça !
+             {t('fan.subtitle')}
            </p>
            <p className="text-white font-semibold mb-8">
-             Places limitées et un cadeau t'attends lors de la sortie de l'application mobile.
+             {t('fan.limited')}
            </p>
 
            <WaitlistForm />
@@ -235,7 +289,7 @@ export default function HomePage() {
           {/* Footer */}
           <footer className="py-12 px-4 pb-20 xl:pb-12 border-t border-gray-700 bg-black">
             <div className="max-w-4xl mx-auto text-center">
-              <p className="text-gray-300 mb-4 font-league-spartan">Suis-nous aussi sur Instagram</p>
+              <p className="text-gray-300 mb-4 font-league-spartan">{t('footer.instagram')}</p>
               <div className="flex justify-center pb-10">
                 <div className=" w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-xl flex items-center justify-center">
                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" >

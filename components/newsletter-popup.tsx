@@ -19,6 +19,27 @@ export default function NewsletterPopup() {
     return () => clearTimeout(timer)
   }, [])
 
+  // Prevent background scrolling when popup is open
+  useEffect(() => {
+    if (isOpen) {
+      // Save current scroll position
+      const scrollY = window.scrollY
+      
+      // Lock body scroll
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.width = '100%'
+      
+      return () => {
+        // Restore scroll position when popup closes
+        document.body.style.position = ''
+        document.body.style.top = ''
+        document.body.style.width = ''
+        window.scrollTo(0, scrollY)
+      }
+    }
+  }, [isOpen])
+
   const handleClose = () => {
     setIsOpen(false)
   }
@@ -34,7 +55,7 @@ export default function NewsletterPopup() {
       />
       
       {/* Popup */}
-      <div className="relative bg-black rounded-2xl p-4 sm:p-8 max-w-sm sm:max-w-md mx-2 sm:mx-4 border border-gray-800 shadow-2xl max-h-[80vh] overflow-y-auto">
+      <div className="relative bg-black rounded-2xl p-4 sm:p-8 max-w-sm sm:max-w-md mx-2 sm:mx-4 border border-gray-800 shadow-2xl max-h-[80vh] overflow-y-auto scrollbar-thin scrollbar-track-gray-800 scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-500">
         {/* Bouton fermer X en blanc */}
         <button
           onClick={handleClose}

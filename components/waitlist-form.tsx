@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Loader2, Mail } from "lucide-react"
 import { joinWaitlist } from "@/lib/actions"
+
 import { useLanguage } from "@/lib/language-context"
 
 function SubmitButton() {
@@ -36,6 +37,7 @@ export default function WaitlistForm() {
   const [state, formAction] = useActionState(joinWaitlist, null)
   const { t } = useLanguage()
 
+
   return (
     <div className="max-w-md mx-auto">
       <form action={formAction} className="space-y-6">
@@ -64,36 +66,6 @@ export default function WaitlistForm() {
             />
           </div>
           
-          {/* Sélection d'âge */}
-          <div className="space-y-3">
-            <div className="flex items-center space-x-3">
-              <input
-                type="radio"
-                id="age18plus"
-                name="age"
-                value="18plus"
-                className="w-4 h-4 text-red-600 bg-gray-800 border-gray-600 focus:ring-red-500 focus:ring-2"
-              />
-              <label htmlFor="age18plus" className="text-sm text-gray-300 font-league-spartan">
-                {t('form.age.18plus')}
-              </label>
-            </div>
-            <div className="flex items-center space-x-3">
-              <input
-                type="radio"
-                id="age18minus"
-                name="age"
-                value="18minus"
-                className="w-4 h-4 text-red-600 bg-gray-800 border-gray-600 focus:ring-red-500 focus:ring-2"
-              />
-              <label htmlFor="age18minus" className="text-sm text-gray-300 font-league-spartan">
-                {t('form.age.18minus')}
-              </label>
-            </div>
-            <p className="text-xs text-gray-400 font-league-spartan">
-              * {t('form.age.disclaimer')}
-            </p>
-          </div>
         </div>
 
         <SubmitButton />

@@ -1,6 +1,5 @@
 "use server"
 
-import { createServerClient } from "@/lib/supabase/server"
 import { revalidatePath } from "next/cache"
 
 export async function joinWaitlist(prevState: any, formData: FormData) {
@@ -10,8 +9,6 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
   }
 
   const email = formData.get("email")
-  const name = formData.get("name")
-  const age = formData.get("age") // Radio button returns the selected value
 
   // Validate required fields
   if (!email) {
@@ -24,35 +21,69 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
     return { error: "Please enter a valid email address" }
   }
 
-  // Validate age selection
-  if (!age) {
-    return { error: "Please select your age group" }
+  // Check if Brevo API key is configured
+  const brevoApiKey = process.env.BREVO_API_KEY
+  if (!brevoApiKey) {
+    console.error("BREVO_API_KEY is not configured")
+    return { error: "Service configuration error. Please try again later." }
   }
 
-  const supabase = createServerClient()
 
   try {
-    const { error } = await supabase.from("waitlist").insert([
-      {
-        email: email.toString(),
-        name: name?.toString() || null,
-        age: age.toString(),
+    // Prepare contact data for Brevo API
+    const contactData = {
+      email: email.toString(),
+      attributes: {
+        SOURCE: 'Website Waitlist',
+        SIGNUP_DATE: new Date().toISOString()
       },
-    ])
+      listIds: [19], // Using "Inscription Mordu Sport" list ID
+      updateEnabled: true // Allow updating existing contacts
+    }
 
-    if (error) {
-      // Handle duplicate email error
-      if (error.code === "23505") {
-        return { error: "This email is already on the waitlist" }
+    // Call Brevo API directly
+    const response = await fetch('https://api.brevo.com/v3/contacts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': brevoApiKey,
+        'Accept': 'application/json',
+        'User-Agent': 'MorduSport-Website/1.0'
+      },
+      body: JSON.stringify(contactData)
+    })
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}))
+      console.error("Brevo API error:", {
+        status: response.status,
+        statusText: response.statusText,
+        errorData: errorData,
+        requestData: contactData
+      })
+      
+      // Handle specific Brevo errors
+      if (response.status === 400) {
+        return { error: "Invalid email address. Please check and try again." }
       }
-      console.error("Waitlist error:", error)
+      
+      if (response.status === 401) {
+        console.error("Brevo API authentication failed")
+        return { error: "Service authentication error. Please try again later." }
+      }
+
+      if (response.status === 429) {
+        return { error: "Too many requests. Please try again in a few minutes." }
+      }
+
+      // Generic error for other cases
       return { error: "Failed to join waitlist. Please try again." }
     }
 
     revalidatePath("/")
-    return { success: "Successfully joined the waitlist! We'll be in touch soon." }
-  } catch (error) {
-    console.error("Waitlist submission error:", error)
-    return { error: "An unexpected error occurred. Please try again." }
+    return { success: "Inscrit avec succès à la liste d'attente ! Nous vous contacterons bientôt." }
+  } catch (error: any) {
+    console.error("Network error:", error)
+    return { error: "Network error. Please check your connection and try again." }
   }
 }

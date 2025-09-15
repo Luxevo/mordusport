@@ -100,8 +100,8 @@ export default function HomePage() {
                   {t('nav.fan')}
                 </a>
                 
-                {/* Language Selector */}
-                <div className="flex items-center space-x-2 ml-4">
+                {/* Language Selector - Hidden since site is French-only */}
+                {/* <div className="flex items-center space-x-2 ml-4">
                   <button
                     onClick={() => setLanguage('fr')}
                     className={`px-2 py-1 text-sm font-league-spartan transition-colors duration-200 ${
@@ -123,7 +123,7 @@ export default function HomePage() {
                   >
                     {t('lang.en')}
                   </button>
-                </div>
+                </div> */}
               </div>
 
             {/* Mobile menu button */}
@@ -166,8 +166,8 @@ export default function HomePage() {
                 {t('nav.fan')}
               </a>
               
-              {/* Mobile Language Selector */}
-              <div className="flex items-center space-x-4 pt-4 border-t border-gray-700">
+              {/* Language Selector - Hidden since site is French-only */}
+              {/* <div className="flex items-center space-x-4 pt-4 border-t border-gray-700">
                 <span className="text-gray-400 text-sm font-league-spartan">Language:</span>
                 <div className="flex items-center space-x-2">
                   <button
@@ -191,7 +191,7 @@ export default function HomePage() {
                     {t('lang.en')}
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         )}

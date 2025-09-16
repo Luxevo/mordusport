@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { Apple, Play } from "lucide-react"
 import WaitlistForm from "@/components/waitlist-form"
 import NewsletterPopup from "@/components/newsletter-popup"
@@ -13,6 +14,9 @@ import { useLanguage } from "@/lib/language-context"
 
 export default function HomePage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isRightAdVisible, setIsRightAdVisible] = useState(true)
+  const [isLeftAdVisible, setIsLeftAdVisible] = useState(true)
+  const [isMobileAdVisible, setIsMobileAdVisible] = useState(true)
   const { language, setLanguage, t } = useLanguage()
 
   const toggleMobileMenu = () => {
@@ -166,6 +170,24 @@ export default function HomePage() {
                 {t('nav.fan')}
               </a>
               
+              {/* Liens légaux */}
+              <div className="pt-4 border-t border-gray-700 space-y-3">
+                <Link 
+                  href="/politique-de-confidentialite"
+                  className="block text-gray-400 hover:text-gray-300 text-sm font-league-spartan transition-colors duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Politique de confidentialité
+                </Link>
+                <Link 
+                  href="/mentions-legales"
+                  className="block text-gray-400 hover:text-gray-300 text-sm font-league-spartan transition-colors duration-200"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Mentions légales
+                </Link>
+              </div>
+              
               {/* Language Selector - Hidden since site is French-only */}
               {/* <div className="flex items-center space-x-4 pt-4 border-t border-gray-700">
                 <span className="text-gray-400 text-sm font-league-spartan">Language:</span>
@@ -297,23 +319,46 @@ export default function HomePage() {
                  </svg>
                 </div>
               </div>
+              
+              {/* Liens légaux - Desktop seulement */}
+              <div className="hidden md:flex justify-center items-center gap-6 pt-4 border-t border-gray-800">
+                <Link 
+                  href="/politique-de-confidentialite"
+                  className="text-gray-400 hover:text-gray-300 text-sm font-league-spartan transition-colors"
+                >
+                  Politique de confidentialité
+                </Link>
+                <span className="text-gray-600">•</span>
+                <Link 
+                  href="/mentions-legales"
+                  className="text-gray-400 hover:text-gray-300 text-sm font-league-spartan transition-colors"
+                >
+                  Mentions légales
+                </Link>
+              </div>
             </div>
           </footer>
 
       {/* BET99 Ad - Sticky Image Right */}
-      <div className="hidden xl:block fixed right-4 top-24 z-48">
-        <Bet99Ad />
-      </div>
+      {isRightAdVisible && (
+        <div className="hidden xl:block fixed right-4 top-24 z-48">
+          <Bet99Ad onClose={() => setIsRightAdVisible(false)} />
+        </div>
+      )}
 
       {/* BET99 Ad - Sticky Image Left */}
-      <div className="hidden xl:block fixed left-4 top-24 z-48">
-        <Bet99Ad />
-      </div>
+      {isLeftAdVisible && (
+        <div className="hidden xl:block fixed left-4 top-24 z-48">
+          <Bet99Ad onClose={() => setIsLeftAdVisible(false)} />
+        </div>
+      )}
 
       {/* BET99 Ad - Mobile/Tablet Sticky Bottom */}
-      <div className="xl:hidden fixed bottom-0 left-0 right-0 z-40 flex justify-center">
-        <Bet99AdMobile />
-      </div>
+      {isMobileAdVisible && (
+        <div className="xl:hidden fixed bottom-0 left-0 right-0 z-40 flex justify-center">
+          <Bet99AdMobile onClose={() => setIsMobileAdVisible(false)} />
+        </div>
+      )}
     </div>
   )
 }

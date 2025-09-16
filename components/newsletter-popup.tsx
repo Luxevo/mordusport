@@ -101,6 +101,27 @@ export default function NewsletterPopup() {
           <p className="text-xs text-gray-500 mt-4 sm:mt-6 font-league-spartan leading-relaxed max-w-sm mx-auto">
             {t('popup.disclaimer')}
           </p>
+          
+          {/* Liens légaux */}
+          <div className="flex justify-center gap-4 mt-4 text-xs text-gray-500">
+            <a 
+              href="/politique-de-confidentialite" 
+              className="hover:text-gray-300 transition-colors underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Politique de confidentialité
+            </a>
+            <span>•</span>
+            <a 
+              href="/mentions-legales" 
+              className="hover:text-gray-300 transition-colors underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Mentions légales
+            </a>
+          </div>
         </div>
       </div>
     </div>

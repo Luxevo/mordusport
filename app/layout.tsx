@@ -4,9 +4,8 @@ import "./globals.css"
 import { LanguageProvider } from "@/lib/language-context"
 
 export const metadata: Metadata = {
-  title: "Mordu Sport - L'expérience ultime pour les fans de sport | The Ultimate Experience for Real Sports Fans",
-  description:
-    "Regardez vos matchs préférés et chattez en temps réel avec d'autres passionnés. Comme Twitch, mais pour le sport. NHL, NBA, NFL et plus encore. | Watch your favorite games and chat in real-time with other enthusiasts. Like Twitch, but for sports. NHL, NBA, NFL and more.",
+  title: "Mordu Sport - L'expérience ultime pour les fans de sport",
+  description: "Regardez vos matchs préférés et chattez en temps réel avec d'autres passionnés. Comme Twitch, mais pour le sport. NHL, NBA, NFL et plus encore.",
   keywords: "sport, streaming, chat, NHL, NBA, NFL, fans, communauté, live, sports, community, Quebec, Canada",
   authors: [{ name: "Mordu Sport" }],
   creator: "Mordu Sport",
@@ -26,7 +25,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-    generator: 'v0.app'
+  generator: 'v0.app'
 }
 
 export default function RootLayout({
@@ -35,14 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr">
-      <head>
-        <style>{`
-html {
-  font-family: 'League Spartan', sans-serif;
-}
-        `}</style>
-      </head>
+    <html lang="fr" suppressHydrationWarning>
       <body className="font-league-spartan">
         <LanguageProvider>
           {children}

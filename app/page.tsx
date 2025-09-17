@@ -17,7 +17,7 @@ export default function HomePage() {
   const [isRightAdVisible, setIsRightAdVisible] = useState(true)
   const [isLeftAdVisible, setIsLeftAdVisible] = useState(true)
   const [isMobileAdVisible, setIsMobileAdVisible] = useState(true)
-  const { language, setLanguage, t } = useLanguage()
+  const { t } = useLanguage()
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -188,32 +188,6 @@ export default function HomePage() {
                 </Link>
               </div>
               
-              {/* Language Selector - Hidden since site is French-only */}
-              {/* <div className="flex items-center space-x-4 pt-4 border-t border-gray-700">
-                <span className="text-gray-400 text-sm font-league-spartan">Language:</span>
-                <div className="flex items-center space-x-2">
-                  <button
-                    onClick={() => setLanguage('fr')}
-                    className={`px-3 py-1 text-sm font-league-spartan transition-colors duration-200 ${
-                      language === 'fr' 
-                        ? 'text-white bg-gray-700 rounded' 
-                        : 'text-gray-400 hover:text-white'
-                    }`}
-                  >
-                    {t('lang.fr')}
-                  </button>
-                  <button
-                    onClick={() => setLanguage('en')}
-                    className={`px-3 py-1 text-sm font-league-spartan transition-colors duration-200 ${
-                      language === 'en' 
-                        ? 'text-white bg-gray-700 rounded' 
-                        : 'text-gray-400 hover:text-white'
-                    }`}
-                  >
-                    {t('lang.en')}
-                  </button>
-                </div>
-              </div> */}
             </div>
           </div>
         )}
@@ -230,11 +204,7 @@ export default function HomePage() {
                      {/* Slogan */}
            <AnimatedElement>
              <p className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-gray-300 mb-16 font-league-spartan font-bold">
-             {language === 'fr' ? (
-               <>L'EXPÉRIENCE <span className="text-blue-500 font-good-brush">ULTIME</span> DES <span className="text-blue-500 font-good-brush">VRAIS FANS</span> DE SPORT</>
-             ) : (
-               <>THE <span className="text-blue-500 font-good-brush">ULTIMATE</span> EXPERIENCE FOR <span className="text-blue-500 font-good-brush">REAL FANS</span> OF SPORT</>
-             )}
+               L'EXPÉRIENCE <span style={{ color: '#00C4FF' }} className="font-good-brush">ULTIME</span> DES <span style={{ color: '#00C4FF' }} className="font-good-brush">VRAIS FANS</span> DE SPORT
              </p>
            </AnimatedElement>
         </div>
@@ -305,6 +275,16 @@ export default function HomePage() {
            </p>
 
            <WaitlistForm />
+           
+           {/* Texte places limitées */}
+           <p className="text-white font-semibold mt-6 mb-4">
+             Places limitées, et un cadeau exclusif t'attend au lancement officiel.
+           </p>
+           
+           {/* Texte disclaimer */}
+           <p className="text-xs text-gray-500 mt-4 font-league-spartan leading-relaxed max-w-lg mx-auto">
+             En t'inscrivant, tu acceptes de recevoir des courriels promotionnels avec du mordant pouvant causer la rage de sport. Tu peux te désabonner à tout moment avec le lien prévu à cet effet.
+           </p>
          </div>
        </section>     
 
@@ -313,11 +293,17 @@ export default function HomePage() {
             <div className="max-w-4xl mx-auto text-center">
               <p className="text-gray-300 mb-4 font-league-spartan">{t('footer.instagram')}</p>
               <div className="flex justify-center pb-10">
-                <div className=" w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-xl flex items-center justify-center">
+                <a 
+                  href="https://www.instagram.com/mordusport/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-xl flex items-center justify-center hover:scale-110 transition-transform duration-200"
+                  aria-label="Suivez-nous sur Instagram @mordusport"
+                >
                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" >
-                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.689-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.689-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.44z" />
                  </svg>
-                </div>
+                </a>
               </div>
               
               {/* Liens légaux - Desktop seulement */}

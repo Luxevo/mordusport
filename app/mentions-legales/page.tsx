@@ -40,7 +40,7 @@ export default function MentionsLegales() {
             </div>
             <p className="text-gray-300 leading-relaxed">
               <strong>Courriel de contact :</strong>{' '}
-              <a href="mailto:info@mordusport.ca" className="text-blue-400 hover:text-blue-300">
+              <a href="mailto:info@mordusport.ca" style={{ color: '#00C4FF' }} className="hover:opacity-80 transition-opacity">
                 info@mordusport.ca
               </a>
             </p>
@@ -51,7 +51,7 @@ export default function MentionsLegales() {
             <p className="text-gray-300 leading-relaxed">
               <strong>Responsable légal et de la publication :</strong><br />
               William Foucault Sourdif –{' '}
-              <a href="mailto:info@mordusport.ca" className="text-blue-400 hover:text-blue-300">
+              <a href="mailto:info@mordusport.ca" style={{ color: '#00C4FF' }} className="hover:opacity-80 transition-opacity">
                 info@mordusport.ca
               </a>
             </p>
@@ -61,7 +61,7 @@ export default function MentionsLegales() {
             <h2 className="text-2xl font-bold mb-4">3. Hébergement</h2>
             <p className="text-gray-300 leading-relaxed mb-4">
               Le site web est hébergé par <strong>Vercel Inc.</strong>, 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis –{' '}
-              <a href="https://vercel.com" className="text-blue-400 hover:text-blue-300" target="_blank" rel="noopener noreferrer">
+              <a href="https://vercel.com" style={{ color: '#00C4FF' }} className="hover:opacity-80 transition-opacity" target="_blank" rel="noopener noreferrer">
                 https://vercel.com
               </a>
             </p>
@@ -97,13 +97,13 @@ export default function MentionsLegales() {
             </p>
             <p className="text-gray-300 leading-relaxed mb-4">
               Conformément aux lois applicables au Québec et au Canada, les utilisateurs disposent d'un droit d'accès, de rectification et de suppression de leurs données personnelles. Ces droits peuvent être exercés en écrivant à :{' '}
-              <a href="mailto:info@mordusport.ca" className="text-blue-400 hover:text-blue-300">
+              <a href="mailto:info@mordusport.ca" style={{ color: '#00C4FF' }} className="hover:opacity-80 transition-opacity">
                 info@mordusport.ca
               </a>.
             </p>
             <p className="text-gray-300 leading-relaxed">
               Pour plus d'informations, veuillez consulter notre{' '}
-              <Link href="/politique-de-confidentialite" className="text-blue-400 hover:text-blue-300">
+              <Link href="/politique-de-confidentialite" style={{ color: '#00C4FF' }} className="hover:opacity-80 transition-opacity">
                 Politique de confidentialité
               </Link>.
             </p>
@@ -152,7 +152,7 @@ export default function MentionsLegales() {
               </p>
               <p className="text-gray-300 leading-relaxed">
                 <strong>Jeu : aide et référence au Québec :</strong> 1-800-461-0140 ou{' '}
-                <a href="https://aidejeu.ca" className="text-blue-400 hover:text-blue-300" target="_blank" rel="noopener noreferrer">
+                <a href="https://aidejeu.ca" style={{ color: '#00C4FF' }} className="hover:opacity-80 transition-opacity" target="_blank" rel="noopener noreferrer">
                   https://aidejeu.ca
                 </a>
               </p>
@@ -184,7 +184,8 @@ export default function MentionsLegales() {
             <p className="text-gray-400 text-sm mb-4">Voir aussi :</p>
             <Link 
               href="/politique-de-confidentialite" 
-              className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium"
+              style={{ color: '#00C4FF' }}
+              className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity text-sm font-medium"
             >
               Politique de confidentialité
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

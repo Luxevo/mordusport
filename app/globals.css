@@ -1,6 +1,11 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+/* Configuration HTML par défaut */
+html {
+  font-family: 'League Spartan', sans-serif;
+}
+
 /* Fonts locales League Spartan */
 @font-face {
   font-family: 'League Spartan';

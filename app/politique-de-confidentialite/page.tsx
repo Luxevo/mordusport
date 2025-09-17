@@ -18,7 +18,7 @@ export default function PolitiqueConfidentialite() {
         </Link>
 
         {/* Titre principal */}
-        <h1 className="text-3xl md:text-4xl font-bold font-league-spartan mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold font-league-spartan mb-8" style={{ color: '#00C4FF' }}>
           Politique de confidentialité
         </h1>
 
@@ -32,14 +32,14 @@ export default function PolitiqueConfidentialite() {
             <h2 className="text-2xl font-bold mb-4">1. Responsable du traitement</h2>
             <p className="text-gray-300 leading-relaxed mb-4">
               Le site Mordu du Sport (accessible à l'adresse{' '}
-              <a href="https://mordusport.ca" className="text-blue-400 hover:text-blue-300">
+              <a href="https://mordusport.ca" style={{ color: '#00C4FF' }} className="hover:opacity-80 transition-opacity">
                 https://mordusport.ca
               </a>
               ) est exploité par son propriétaire.
             </p>
             <p className="text-gray-300 leading-relaxed">
               Pour toute question concernant cette politique, vous pouvez nous écrire à :{' '}
-              <a href="mailto:info@mordusport.com" className="text-blue-400 hover:text-blue-300">
+              <a href="mailto:info@mordusport.com" style={{ color: '#00C4FF' }} className="hover:opacity-80 transition-opacity">
                 info@mordusport.com
               </a>
             </p>
@@ -123,7 +123,7 @@ export default function PolitiqueConfidentialite() {
             </ul>
             <p className="text-gray-300 leading-relaxed">
               Pour exercer vos droits, contactez-nous à :{' '}
-              <a href="mailto:info@mordusport.com" className="text-blue-400 hover:text-blue-300">
+              <a href="mailto:info@mordusport.com" style={{ color: '#00C4FF' }} className="hover:opacity-80 transition-opacity">
                 info@mordusport.com
               </a>
             </p>
@@ -144,7 +144,8 @@ export default function PolitiqueConfidentialite() {
             <p className="text-gray-400 text-sm mb-4">Voir aussi :</p>
             <Link 
               href="/mentions-legales" 
-              className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium"
+              style={{ color: '#00C4FF' }}
+              className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity text-sm font-medium"
             >
               Mentions légales
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

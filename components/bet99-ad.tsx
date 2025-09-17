@@ -3,17 +3,15 @@
 import { useState } from "react"
 import Image from "next/image"
 import { X } from "lucide-react"
-import { useLanguage } from "@/lib/language-context"
 
 interface Bet99AdProps {
   onClose?: () => void
 }
 
 export default function Bet99Ad({ onClose }: Bet99AdProps) {
-  const { language } = useLanguage()
   const [isVisible, setIsVisible] = useState(true)
   
-  // Using French version only for now - English version hidden for later use
+  // Configuration de la publicité
   const adImage = '/bet99-ad-banner.png'
   const adAlt = 'BET99 - Deuxième chance jusqu\'à 800$'
   const adLink = 'https://record.canadiangamingaffiliates.com/_8eweRFtGXWkdimWE6PdS1WNd7ZgqdRLk/1/'
